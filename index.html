@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="bg-dark nav nav-pills p-2 opacity-75">
+    <a class="text-light nav-link active ml-2" href="/index.html">Todo</a>
+    <a class="text-light nav-link" href="/questions.html">Questions</a>
+  </nav>
+<div class="container max-height rounded bg-light mt-2 pb-2 shadow-lg">
+  <div class="row justify-content-center">
+    <h1>Todo List</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <h4>Input a Task!</h1>
+      <form onsubmit="return false;" name="taskForm">
+        <div class="form-group">
+          <label for="taskinput">Task:</label>
+          <input type="text" id="taskinput" name="Task">
+        </div>
+        <div class="form-group">
+          <label for="dateinput">Date:</label>
+          <input type="date" id="dateinput" name="Date">
+        </div>
+        <button onclick="appendTodo()" class="btn btn-primary ml-5">Submit</button>
+      </form>
+    </div>
+    <div class="col-sm">
+      <table  class="border table">
+        <thead>
+          <tr>
+            <th>
+              Task
+            </th>
+            <th>
+              Date
+            </th>
+            <th>
+              Status
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+ 
+</div>
+  
+  
+    <script>
+      let count= 0;
+  function appendTodo() {
+    
+    // Get form values
+    var Task = document.getElementById('taskinput').value;
+    var Date = document.getElementById('dateinput').value;
+    console.log(Task + Date);
+
+    // Append data to the table
+    var tableBody = document.getElementById('tbody');
+    var newRow = tableBody.insertRow(tableBody.rows.length);
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    cell1.innerHTML = Task;
+    cell2.innerHTML = Date;
+    cell3.innerHTML = '<input type="checkbox">'
+  
+    // Clear the former valcues
+    document.getElementById('Task').value = '';
+    document.getElementById('Date').value = '';
+
+
+}
+</script>
+</body>
+</html>
